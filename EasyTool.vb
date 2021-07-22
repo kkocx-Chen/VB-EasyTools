@@ -46,7 +46,9 @@
     Public Sub SendCommand(serial As IO.Ports.SerialPort, command As Integer)
         serial.Write(command)
     End Sub
-    Public Sub ReadCommand(serial As IO.Ports.SerialPort, command As Integer)
-        serial.Read(command)
-    End Sub
+    Public Function ReadCommand(serial As IO.Ports.SerialPort)
+        Dim command(1) As Byte
+        serial.Read(command, 0, 1)
+        Return command
+    End Function
 End Module
